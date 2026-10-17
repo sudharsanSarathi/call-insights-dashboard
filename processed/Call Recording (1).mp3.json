@@ -1,0 +1,31 @@
+{
+  "agent_name": "Saranya",
+  "customer_name": null,
+  "buyer_summary": "1500 sq ft buyer in Namakkal",
+  "primary_site_name": "Aniyapuram Parali Division Site",
+  "property_names": [
+    "Aniyapuram Parali Division",
+    "Arthinaripalayam Idappal Road",
+    "Mavuratti Kudacheri"
+  ],
+  "location": "Namakkal-Mettupalayam/Mohanur road near Parali division; also Idappal/Arthinaripalayam near Thiruchengode-Paramathi Velur road",
+  "budget_range": "30-55 lakhs for 2BHK ready; construction within budget",
+  "customer_requirements": [
+    "1500-1600 sq ft plot or house",
+    "Near colleges and schools",
+    "Corporation water availability",
+    "Monday site visit"
+  ],
+  "scheduled_visit": {
+    "day": "Monday",
+    "time": "10:00 AM",
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Corporation water clarified only after repetition",
+    "Per-sq-ft price and total cost mixed up initially"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (1).mp3"
+}

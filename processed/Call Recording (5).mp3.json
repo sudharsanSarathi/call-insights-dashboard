@@ -1,0 +1,29 @@
+{
+  "agent_name": "Kruthika",
+  "customer_name": "Pooja",
+  "buyer_summary": "Karur Aravakurichi local own-use 2BHK buyer",
+  "primary_site_name": "Aravakurichi",
+  "property_names": [
+    "Aravakurichi",
+    "Velayuthampalayam"
+  ],
+  "location": "Aravakurichi bus stand, near Aruvi Rice Mill",
+  "budget_range": "30 lakhs total, 3-5 lakhs down payment",
+  "customer_requirements": [
+    "2BHK",
+    "wants to inspect before deciding",
+    "pricing and EMI details"
+  ],
+  "scheduled_visit": {
+    "day": "tomorrow",
+    "time": "10:00 AM",
+    "confirmed": true
+  },
+  "customer_interest_score": 3,
+  "issues": [
+    "Customer unavailable for immediate visit today",
+    "Customer did not state name clearly at first"
+  ],
+  "outcome": "callback_requested",
+  "call_name": "Call Recording (5).mp3"
+}

@@ -1,0 +1,34 @@
+{
+  "agent_name": "Banupriya",
+  "customer_name": "Pakka",
+  "buyer_summary": "Namakkal-based sister needing 1BHK",
+  "primary_site_name": "Paramathi Velur to Tiruchengode project",
+  "property_names": [
+    "Thaniyapuram",
+    "Paramathi Velur to Tiruchengode",
+    "Mavingurti",
+    "Koodacheri"
+  ],
+  "location": "Nammakkal district outskirts",
+  "budget_range": "Up to 25 lakhs",
+  "customer_requirements": [
+    "1 BHK",
+    "Cash payment",
+    "Own-use house",
+    "Sister's requirement",
+    "Near Paramathi Velur"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": null,
+    "confirmed": false
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "27L starting price exceeds 25L budget",
+    "Customer undecided on specific project",
+    "Need sister's confirmation for callback"
+  ],
+  "outcome": "callback_requested",
+  "call_name": "Call Recording (9).mp3"
+}

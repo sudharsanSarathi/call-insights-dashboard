@@ -1,0 +1,31 @@
+{
+  "agent_name": "Krithika",
+  "customer_name": "Perumal",
+  "buyer_summary": "Namakkal local, own-use 2BHK buyer",
+  "primary_site_name": "Aniyapuram (Parali Division)",
+  "property_names": [
+    "Aniyapuram",
+    "Koodacheri",
+    "Parali Division",
+    "Nallur Ballur"
+  ],
+  "location": "Namakkal; Parali Division near Aniyapuram bridge; Mavaratti to Nallur Ballur corridor",
+  "budget_range": "50-54 lakhs for 2BHK; customer expected 30-35 lakhs",
+  "customer_requirements": [
+    "2BHK readymade house for own use",
+    "Near Aniyapuram / Parali Division",
+    "Home loan facility with 5 lakh initial payment"
+  ],
+  "scheduled_visit": {
+    "day": "Wednesday",
+    "time": "10:00 AM",
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Price gap between agent's 50-54 lakhs and customer's 30-35 lakhs",
+    "Site proximity: agent described Aniyapuram, customer mentioned Koodacheri"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (13).mp3"
+}

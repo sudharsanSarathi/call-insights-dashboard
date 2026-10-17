@@ -1,0 +1,31 @@
+{
+  "agent_name": "Bhanu Priya",
+  "customer_name": null,
+  "buyer_summary": "Land mediation broker from Namakkal",
+  "primary_site_name": "Aniyapuram Parali Division site",
+  "property_names": [
+    "Aniyapuram (Parali Division)",
+    "Vasanthapuram (Pattaasu Kadai)",
+    "Arthanareepalayam (Paramathi Road)",
+    "Koodacheri area"
+  ],
+  "location": "Namakkal, opposite Karur Gold Finance",
+  "budget_range": null,
+  "customer_requirements": [
+    "Mediation-focused land lead",
+    "Inspect site before client referral",
+    "Receive location via WhatsApp"
+  ],
+  "scheduled_visit": {
+    "day": "today",
+    "time": "2:00 PM",
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Identity confusion during greeting",
+    "Customer is a mediator, not direct buyer"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (10).mp3"
+}

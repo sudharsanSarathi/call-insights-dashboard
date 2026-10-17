@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Call transcript chat</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 760px; margin: 40px auto; background: #f5f5f5; }
+  h2 { font-weight: 500; }
+  #chat { background: white; border-radius: 8px; padding: 16px; height: 500px; overflow-y: auto; border: 1px solid #ddd; }
+  .msg { margin-bottom: 14px; line-height: 1.5; white-space: pre-wrap; }
+  .user { color: #0b3d91; font-weight: 500; }
+  .assistant { color: #1a1a1a; }
+  .label { font-size: 12px; color: #888; margin-bottom: 2px; }
+  #inputRow { display: flex; gap: 8px; margin-top: 12px; }
+  #userInput { flex: 1; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px; }
+  #sendBtn { padding: 10px 18px; border: none; background: #0b3d91; color: white; border-radius: 6px; cursor: pointer; }
+  #sendBtn:disabled { background: #999; }
+</style>
+</head>
+<body>
+  <h2>Chat with your call transcripts</h2>
+  <div id="chat"></div>
+  <div id="inputRow">
+    <input id="userInput" type="text" placeholder="Ask about the calls..." />
+    <button id="sendBtn">Send</button>
+  </div>
+
+<script>
+const chatEl = document.getElementById('chat');
+const inputEl = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+let history = [];
+
+function addMessage(role, content) {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg';
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = role === 'user' ? 'You' : 'Assistant';
+  const body = document.createElement('div');
+  body.className = role === 'user' ? 'user' : 'assistant';
+  body.textContent = content;
+  wrap.appendChild(label);
+  wrap.appendChild(body);
+  chatEl.appendChild(wrap);
+  chatEl.scrollTop = chatEl.scrollHeight;
+}
+
+async function send() {
+  const message = inputEl.value.trim();
+  if (!message) return;
+  addMessage('user', message);
+  history.push({ role: 'user', content: message });
+  inputEl.value = '';
+  sendBtn.disabled = true;
+  addMessage('assistant', 'Thinking...');
+  const thinkingNode = chatEl.lastChild;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, history: history.slice(0, -1) })
+    });
+    const data = await res.json();
+    thinkingNode.remove();
+    addMessage('assistant', data.reply);
+    history.push({ role: 'assistant', content: data.reply });
+  } catch (e) {
+    thinkingNode.remove();
+    addMessage('assistant', 'Error: ' + e.message);
+  }
+  sendBtn.disabled = false;
+}
+
+sendBtn.addEventListener('click', send);
+inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
+</script>
+</body>
+</html>

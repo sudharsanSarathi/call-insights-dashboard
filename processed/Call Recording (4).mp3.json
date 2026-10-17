@@ -1,0 +1,29 @@
+{
+  "agent_name": "Keerthana",
+  "customer_name": "Abinaya",
+  "buyer_summary": "Abinaya, investment buyer",
+  "primary_site_name": "Vadasandhur Real Estate",
+  "property_names": [
+    "Vadasandhur Real Estate",
+    "Dindigul Site"
+  ],
+  "location": "Vadasandhur, Dindigul",
+  "budget_range": "₹29,00,000 – ₹52,00,000 for flats; negotiable for plots",
+  "customer_requirements": [
+    "Rental investment property",
+    "Pick plot then custom build",
+    "Minimum budget query"
+  ],
+  "scheduled_visit": {
+    "day": "Sunday",
+    "time": "4:00 PM – 4:30 PM",
+    "confirmed": true
+  },
+  "customer_interest_score": 5,
+  "issues": [
+    "Budget figure vague",
+    "Agent did not clarify squat/commercial availability"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (4).mp3"
+}

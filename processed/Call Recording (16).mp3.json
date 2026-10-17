@@ -1,0 +1,40 @@
+{
+  "agent_name": "Selin",
+  "customer_name": "Kumaru",
+  "buyer_summary": "Son of Kumaar, Karur based buyer",
+  "primary_site_name": "Soundarya Avenue (Paramathi Velur)",
+  "property_names": [
+    "Soundarya Avenue",
+    "Koundamputhur",
+    "Vellakkalladi",
+    "Mayilampalayam",
+    "Koodecherry",
+    "Billur",
+    "Thalapalayam",
+    "TNPL area"
+  ],
+  "location": "Koundamputhur road near Vellakkalladi, TNPL, Paramathi Velur",
+  "budget_range": "740 Rs per sq ft starting",
+  "customer_requirements": [
+    "Price per square foot",
+    "Exact site location",
+    "Visit immediately with family",
+    "WhatsApp location sent",
+    "Built house confirmation",
+    "Route navigation"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": null,
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Confusion about TNPL side houses",
+    "Unclear landmark identification",
+    "Property status unclear",
+    "Site contact waiting"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (16).mp3"
+}

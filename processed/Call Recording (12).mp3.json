@@ -1,0 +1,32 @@
+{
+  "agent_name": "Selvin",
+  "customer_name": "Vignesh",
+  "buyer_summary": "Dindigul driver, 5-member family, own-use buyer",
+  "primary_site_name": "Velusundar-Marambadi Road, Dindigul",
+  "property_names": [
+    "Velusundar-Marambadi Road, Dindigul"
+  ],
+  "location": "Dindigul, Velusundar to Marambadi main road",
+  "budget_range": "29 lakhs to 52 lakhs",
+  "customer_requirements": [
+    "2 BHK home",
+    "Own house plan",
+    "Budget 29-52 lakhs",
+    "5-member family",
+    "Sunday evening preferred"
+  ],
+  "scheduled_visit": {
+    "day": "Sunday",
+    "time": "after 6:30 PM",
+    "confirmed": false
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Sunday only free",
+    "Credit query unclear",
+    "Driver by profession",
+    "Visits only on Sunday evening"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (12).mp3"
+}

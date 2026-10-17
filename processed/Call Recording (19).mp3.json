@@ -1,0 +1,37 @@
+{
+  "agent_name": "Kruthika",
+  "customer_name": "Sangeeth",
+  "buyer_summary": "Karur resident, own-use buyer",
+  "primary_site_name": "Velayuthampalayam master plan",
+  "property_names": [
+    "Velayuthampalayam Master Plan",
+    "Arvakkurichi",
+    "Namakkal",
+    "Dindigul",
+    "Trichy"
+  ],
+  "location": "Velayuthampalayam to Kuduimudi Road, near government school",
+  "budget_range": "Land ~4.75L/Cent; House 30-50L",
+  "customer_requirements": [
+    "Land and/or individual house",
+    "Budget around 35 lakhs",
+    "Karur main area only",
+    "Near temple, exact distance",
+    "Evening visit today"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": "Evening",
+    "confirmed": true
+  },
+  "customer_interest_score": 5,
+  "issues": [
+    "Customer rejected distant districts",
+    "Clarified standalone house vs apartment",
+    "30L minimum vs 35L expectation",
+    "Evening time not fixed",
+    "WhatsApp details initially unclear"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (19).mp3"
+}

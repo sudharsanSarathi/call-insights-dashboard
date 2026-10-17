@@ -1,0 +1,35 @@
+{
+  "agent_name": "Banupriya",
+  "customer_name": null,
+  "buyer_summary": "Nearby Namakkal area own use buyer",
+  "primary_site_name": "Aniyapuram Site (Namakkal-Mohanur Rd)",
+  "property_names": [
+    "2 BHK",
+    "1 BHK",
+    "Aniyapuram Pallipirivu",
+    "Paramathi-Tiruchengol Road Project",
+    "Ready to move"
+  ],
+  "location": "Aniyapuram pallipirivu, Namakkal-Mohanur Road, near Namakkal",
+  "budget_range": "29 to 54 lakhs depending on BHK",
+  "customer_requirements": [
+    "2 BHK for own use",
+    "EMI option",
+    "reasonable rate",
+    "weekend site visit"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": null,
+    "confirmed": false
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Buyer currently out of town",
+    "No immediate site visit possible",
+    "Buyer asked if agent covers construction cost",
+    "No firm visit time confirmed"
+  ],
+  "outcome": "callback_requested",
+  "call_name": "Call Recording (11).mp3"
+}

@@ -1,0 +1,32 @@
+{
+  "agent_name": null,
+  "customer_name": "Palanmurugan",
+  "buyer_summary": "Family buyer seeking ground+first floor site",
+  "primary_site_name": "Noyyal Road site near Nallathampalayam",
+  "property_names": [
+    "Noyyal Road site",
+    "Nallathampalayam area",
+    "Vellakkullumadai tract"
+  ],
+  "location": "Noyyal Road past Nallathampalayam, Vellakkullumadai",
+  "budget_range": "25-35 lakhs with bank loan",
+  "customer_requirements": [
+    "Ground and first floor",
+    "Ready house with engineer oversight",
+    "Loan for balance payment",
+    "School and bus access nearby",
+    "Custom model if preferred"
+  ],
+  "scheduled_visit": {
+    "day": "Wednesday",
+    "time": null,
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Custom build timeline not explicitly confirmed",
+    "Exact distance from known locality ambiguous"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (7).mp3"
+}

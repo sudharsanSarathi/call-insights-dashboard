@@ -1,0 +1,31 @@
+{
+  "agent_name": "Banuprriya",
+  "customer_name": "Selvaraj",
+  "buyer_summary": "First-time buyer, Dollar Industries supervisor",
+  "primary_site_name": "Vedasandur Villa Project",
+  "property_names": [
+    "Thogai Munkan Real Estate",
+    "Vedasandur Site"
+  ],
+  "location": "Vedasandur bus stand, Marambadi / Mulvarpatti Road",
+  "budget_range": "1 to 2 lakhs down payment (currently 50,000 available)",
+  "customer_requirements": [
+    "Villa house in Vedasandur",
+    "Near Ayarmalai / local proximity",
+    "Building work progress and readiness",
+    "Down payment and bank loan options",
+    "Site visit with daughter on Tuesday"
+  ],
+  "scheduled_visit": {
+    "day": "Tuesday",
+    "time": null,
+    "confirmed": true
+  },
+  "issues": [
+    "Audio overlap and mishearing",
+    "Budget clarification needed (1-2 lakhs vs 50,000)",
+    "Agent could not hear customer clearly at two points"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (15).mp3"
+}

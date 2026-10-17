@@ -1,0 +1,21 @@
+{
+  "signature": "d75c96fa627688c100d1b50a993f5f8ec7d0ba2bd70c32d5e7244c111be7aa6d",
+  "common_demands": [
+    "Customers consistently state budget ranges and ask for per-square-foot or total price breakdowns.",
+    "Home loan, EMI, down payment, and bank loan options are repeatedly requested.",
+    "Site visit scheduling during weekends, evenings, and specific days is a frequent requirement.",
+    "Proximity to schools, colleges, temples, bus stops, and main areas is commonly specified.",
+    "Buyers seek clarity on whether a property is readymade, under construction, or custom-built per their design.",
+    "Own-use versus investment intent is explicitly stated in most calls."
+  ],
+  "agent_performance": {
+    "best_agent": {
+      "name": "Saleem",
+      "reason": "Saleem recorded a single call with the highest interest score of 5 and a scheduled site visit, with only minor remaining clarifications about rate concessions rather than deal blockers."
+    },
+    "worst_agent": {
+      "name": "Bhanu Priya",
+      "reason": "Bhanu Priya handled the largest number of calls but repeatedly struggled with budget mismatches, identity confusion, location ambiguity, site-detail errors, and unconfirmed callbacks, resulting in few scheduled visits and multiple callbacks requested."
+    }
+  }
+}

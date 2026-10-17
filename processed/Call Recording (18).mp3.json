@@ -1,0 +1,32 @@
+{
+  "agent_name": "Panapriya",
+  "customer_name": null,
+  "buyer_summary": "First-time buyer with existing house",
+  "primary_site_name": "Aniyapuram (Parali Division)",
+  "property_names": [
+    "2BHK Under Construction",
+    "1BHK House",
+    "Land Plot"
+  ],
+  "location": "Aniyapuram school division, near customer's existing house in Neelapuram",
+  "budget_range": "40-50 lakhs",
+  "customer_requirements": [
+    "Looking at both houses and land",
+    "Budget 40-50 lakhs",
+    "Wants builder to construct per custom plan",
+    "Seeks on-site estimate and clarity"
+  ],
+  "scheduled_visit": {
+    "day": "Sunday",
+    "time": "10:00 AM",
+    "confirmed": true
+  },
+  "customer_interest_score": 3,
+  "issues": [
+    "Customer mentioned Saturday visit initially, conflicting with Sunday callback",
+    "Builder cannot commit to custom construction plan without site visit",
+    "2BHK price of 54 lakhs slightly exceeds customer's max budget of 50 lakhs"
+  ],
+  "outcome": "callback_requested",
+  "call_name": "Call Recording (18).mp3"
+}

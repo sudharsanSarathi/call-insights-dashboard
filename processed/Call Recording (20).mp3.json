@@ -1,0 +1,28 @@
+{
+  "agent_name": "Kirthiga",
+  "customer_name": null,
+  "buyer_summary": "Karur local, investment buyer",
+  "primary_site_name": "Velayuthampalayam Plots (Naiyanoor)",
+  "property_names": [
+    "Aravakurichi Land",
+    "Velayuthampalayam Plots"
+  ],
+  "location": "Velayuthampalayam near Naiyanoor on Goundampalayam road; Aravakurichi near police station toward Chinnadharapuram",
+  "budget_range": "Rs 1900–2200 per sq ft",
+  "customer_requirements": [
+    "600–3000 sq ft plots",
+    "Investment property",
+    "Family site visit"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": null,
+    "confirmed": false
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Thursday callback arranged but visit timing unconfirmed"
+  ],
+  "outcome": "callback_requested",
+  "call_name": "Call Recording (20).mp3"
+}

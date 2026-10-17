@@ -1,0 +1,10 @@
+.env
+audios/
+bin/
+transcripts/
+output/
+nichebuild/
+__pycache__/
+*.pyc
+.DS_Store
+.claude/

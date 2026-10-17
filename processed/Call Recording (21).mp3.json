@@ -1,0 +1,30 @@
+{
+  "agent_name": "Saranya",
+  "customer_name": null,
+  "buyer_summary": "Own-use buyer, custom design planned",
+  "primary_site_name": "Kaudacheri Vinayagar Temple Site",
+  "property_names": [
+    "Paramathi Velur Housing",
+    "Kaudacheri Project"
+  ],
+  "location": "Kaudacheri near Vinayagar temple, Paramathi Velur",
+  "budget_range": "27-48 lakhs, 3-5 lakhs initial EMI",
+  "customer_requirements": [
+    "Custom/own design",
+    "Loan-assisted purchase",
+    "Own-use"
+  ],
+  "scheduled_visit": {
+    "day": "Thursday",
+    "time": "10:00 AM",
+    "confirmed": true
+  },
+  "customer_interest_score": 3,
+  "issues": [
+    "Customer lives ~12-15km away unclear",
+    "Initial price/location reason unclear",
+    "Site details slightly confused"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (21).mp3"
+}

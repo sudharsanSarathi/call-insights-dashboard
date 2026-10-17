@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Call insights dashboard</title>
+<style>
+  :root {
+    --navy-900: #1f2a52;
+    --navy-700: #2d3f6e;
+    --navy-500: #3d5590;
+    --navy-100: #e8ebf4;
+    --cream: #f7f5ef;
+    --surface: #ffffff;
+    --text: #1a1f2e;
+    --text-muted: #70758a;
+    --border: #ece9e0;
+    --good: #0a7a2f;
+    --bad: #b32424;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { background: var(--cream); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0 auto;
+    color: var(--text);
+    max-width: 480px;
+    padding: 0 0 110px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Tablet: widen the page and let cards flow 2-up instead of staying in a
+     stretched single mobile column. */
+  @media (min-width: 760px) {
+    body { max-width: 760px; }
+    #dashboardCards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      align-items: start;
+    }
+    .card { margin-top: 0; }
+    .chat-sheet { max-width: 420px; left: auto; right: 24px; bottom: 24px; border-radius: 22px; height: 70vh; box-shadow: 0 20px 50px rgba(31,42,82,0.3); }
+  }
+
+  /* Desktop: give the whole layout real breathing room instead of capping
+     at a phone-width column. */
+  @media (min-width: 1100px) {
+    body { max-width: 1120px; padding-bottom: 60px; }
+    .hero { padding-left: 40px; padding-right: 40px; }
+    .hero-greeting h1 { font-size: 32px; }
+    .hero-greeting p { font-size: 15px; }
+    #dashboardCards {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding: 0 40px;
+    }
+    #dashboardCards .card:first-child { grid-row: span 2; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 20px 18px 190px;
+    background: linear-gradient(180deg,
+      #16204a 0%,
+      #223a7a 18%,
+      #3a63c9 36%,
+      #7fa0e8 58%,
+      #d8e2f7 76%,
+      var(--cream) 94%
+    );
+    color: #fff;
+  }
+  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .hero-logo-badge {
+    
+    border-radius: 12px;
+    
+    display: flex; align-items: center;
+  }
+  .hero-logo-badge img { height: 32px; width: auto; display: block; }
+
+  .icon-btn {
+    width: 38px; height: 38px; border-radius: 50%;
+    border: none; background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex: 0 0 auto;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .icon-btn:active { transform: scale(0.92); }
+  .icon-btn:disabled { opacity: 0.5; cursor: default; }
+  .icon-btn svg { width: 17px; height: 17px; }
+
+  .hero-greeting { padding-top: 26px; }
+  .hero-greeting h1 { margin: 0; font-size: 56px; font-weight: 700; line-height: 0.95; }
+  .hero-greeting p { margin: 6px 0 0; font-size: 14px; color: rgba(255,255,255,0.88); }
+
+  .error-banner {
+    background: #fdecec; border: 1px solid #f3c6c6; color: var(--bad);
+    font-size: 12.5px; padding: 10px 12px; border-radius: 12px; margin: 14px 16px 0; line-height: 1.4;
+  }
+
+  /* ---------- Cards ---------- */
+  #dashboardCards { padding: 0 16px; margin-top: -175px; position: relative; z-index: 2; }
+  .card {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 16px 16px 17px;
+    margin-top: 14px;
+    box-shadow: 0 1px 2px rgba(31,42,82,0.04), 0 8px 20px -14px rgba(31,42,82,0.25);
+  }
+  .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .card-icon {
+    width: 32px; height: 32px; border-radius: 10px; flex: 0 0 auto;
+    background: var(--navy-100); color: var(--navy-700);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .card-icon svg { width: 16px; height: 16px; }
+  .card h3 { margin: 0; font-size: 14.5px; font-weight: 700; color: var(--text); }
+  .card .empty { color: var(--text-muted); font-size: 13px; }
+
+  .tag {
+    display: inline-block; font-size: 10.5px; font-weight: 600;
+    background: var(--navy-100); color: var(--navy-700);
+    padding: 2px 7px; border-radius: 6px; margin-right: 5px;
+  }
+
+  /* Upcoming visits */
+  .day-group { margin-bottom: 14px; }
+  .day-group:last-child { margin-bottom: 0; }
+  .day-heading { font-weight: 700; font-size: 11px; color: var(--navy-500); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .visit-item { border-left: 2px solid var(--navy-100); padding-left: 10px; margin-bottom: 10px; }
+  .visit-item:last-child { margin-bottom: 0; }
+  .visit-site { font-size: 13.5px; font-weight: 600; margin-top: 3px; }
+  .visit-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .visit-hidden { display: none !important; }
+  .visits-toggle-btn {
+    display: block; width: 100%; margin-top: 10px;
+    background: var(--navy-100); color: var(--navy-700);
+    border: none; border-radius: 10px; padding: 9px; font-size: 12.5px; font-weight: 700; cursor: pointer;
+  }
+  .visits-toggle-btn:active { opacity: 0.8; }
+
+  /* Demands */
+  .card ul { margin: 0; padding-left: 0; list-style: none; font-size: 13px; line-height: 1.5; }
+  .card ul li { position: relative; padding-left: 16px; margin-bottom: 8px; }
+  .card ul li:last-child { margin-bottom: 0; }
+  .card ul li::before { content: ""; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--navy-500); }
+
+  /* Properties */
+  .prop-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .prop-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .prop-rank { width: 22px; height: 22px; border-radius: 50%; background: var(--navy-900); color: white; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; }
+  .prop-name { font-size: 13.5px; font-weight: 600; flex: 1; min-width: 0; }
+  .prop-tags { flex: 0 0 auto; text-align: right; }
+  .prop-tags .tag { margin-right: 0; margin-top: 2px; }
+
+  /* Agent performance */
+  .agent-block { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .agent-block:last-child { border-bottom: none; padding-bottom: 0; }
+  .agent-block:first-child { padding-top: 0; }
+  .agent-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .agent-label.best { color: var(--good); }
+  .agent-label.worst { color: var(--bad); }
+  .agent-name { font-size: 14.5px; font-weight: 700; margin: 3px 0 4px; }
+  .agent-reason { font-size: 12.5px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ---------- Bottom bar + floating chat button ---------- */
+  .bottom-bar {
+    position: fixed; left: 0; right: 0; bottom: 10px;
+    height: 46px;
+
+    display: flex; align-items: center; justify-content: center;
+    padding-bottom: env(safe-area-inset-bottom);
+    z-index: 30;
+  }
+  @media (min-width: 760px) {
+    .bottom-bar { justify-content: flex-end; right: 24px; padding-right: 0; }
+  }
+  .chat-fab {
+    position: absolute; top: -24px;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--surface);
+    box-shadow: 0 10px 20px -6px rgba(31,42,82,0.55);
+    border: 4px solid var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+  }
+  .chat-fab:active { transform: scale(0.94); }
+  .chat-fab img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- Chat sheet ---------- */
+  .chat-backdrop {
+    position: fixed; inset: 0; background: rgba(15,20,40,0.45);
+    opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+    z-index: 40;
+  }
+  .chat-backdrop.open { opacity: 1; pointer-events: auto; }
+
+  .chat-sheet {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    height: 85vh; max-width: 480px; margin: 0 auto;
+    background: var(--surface);
+    border-radius: 22px 22px 0 0;
+    box-shadow: 0 -10px 30px rgba(31,42,82,0.25);
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(.32,.72,0,1);
+    z-index: 50;
+    display: flex; flex-direction: column;
+  }
+  @media (min-width: 560px) { .chat-sheet { max-width: 640px; } }
+  .chat-sheet.open { transform: translateY(0); }
+
+  .chat-sheet-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 16px 12px; border-bottom: 1px solid var(--border); flex: 0 0 auto;
+  }
+  .chat-sheet-grabber { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 36px; height: 4px; border-radius: 2px; background: var(--border); }
+  .chat-ai-badge {
+    width: 34px; height: 34px; border-radius: 50%; background: var(--navy-100);
+    display: flex; align-items: center; justify-content: center; flex: 0 0 auto;
+    overflow: hidden;
+  }
+  .chat-ai-badge img { width: 100%; height: 100%; object-fit: cover; }
+  .chat-sheet-title { font-size: 14.5px; font-weight: 700; flex: 1; }
+  .chat-close-btn {
+    width: 30px; height: 30px; border-radius: 50%; border: none; background: var(--navy-100);
+    color: var(--navy-700); font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+
+  #chat { flex: 1; overflow-y: auto; padding: 14px 16px; }
+  .msg { margin-bottom: 14px; line-height: 1.5; white-space: pre-wrap; font-size: 13.5px; }
+  .label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; font-weight: 600; }
+  .user { color: var(--navy-900); }
+  .assistant { color: var(--text); }
+
+  #inputRow {
+    display: flex; gap: 8px; padding: 10px 14px calc(14px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--border); flex: 0 0 auto; background: var(--surface);
+  }
+  #userInput { flex: 1; padding: 11px 14px; border-radius: 22px; border: 1px solid var(--border); font-size: 14px; background: var(--cream); }
+  #userInput:focus { outline: none; border-color: var(--navy-500); }
+  #sendBtn { padding: 0 20px; border: none; border-radius: 22px; background: var(--navy-900); color: white; font-weight: 600; font-size: 13.5px; cursor: pointer; }
+  #sendBtn:disabled { background: #b7bccb; }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-top">
+      <div class="hero-logo-badge">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Thogai Murugan Real Estates">
+      </div>
+      <button class="icon-btn" id="refreshBtn" title="Refresh insights">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v6h-6"/></svg>
+      </button>
+    </div>
+    <div class="hero-greeting">
+     <h1>Hello <br> Santhose!</h1>
+      <p>See your team's insights across {{ dashboard.call_count }} calls</p>
+    </div>
+  </div>
+
+  {% if dashboard.error %}
+  <div class="error-banner">{{ dashboard.error }}</div>
+  {% endif %}
+
+  <div id="dashboardCards">
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="3"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <h3>Upcoming visits</h3>
+      </div>
+      <div id="visitsCard">
+        {% if dashboard.upcoming_visits %}
+          {% for group in dashboard.upcoming_visits %}
+            <div class="day-group">
+              <div class="day-heading">{{ group.day }}</div>
+              {% for v in group.visits %}
+                <div class="visit-item">
+                  {% if v.time %}<span class="tag">{{ v.time }}</span>{% endif %}
+                  <div class="visit-site">{{ v.site }}</div>
+                  <div class="visit-meta">Agent: {{ v.agent }} · Buyer: {{ v.buyer }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty">No scheduled visits found.</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>What customers mostly ask for</h3>
+      </div>
+      <div id="demandsCard">
+        {% if dashboard.common_demands %}
+          <ul>
+            {% for d in dashboard.common_demands %}
+              <li>{{ d }}</li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <div class="empty">No data yet.</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V21H3z"/><path d="M9 21v-7h6v7"/></svg>
+        </div>
+        <h3>Top 5 properties</h3>
+      </div>
+      <div id="propertiesCard">
+        {% if dashboard.top_properties %}
+          {% for p in dashboard.top_properties %}
+            <div class="prop-item">
+              <div class="prop-rank">{{ loop.index }}</div>
+              <div class="prop-name">{{ p.property }}</div>
+              <div class="prop-tags">
+                <span class="tag">{{ p.avg_score }}/5</span>
+                <span class="tag">{{ p.mentions }}×</span>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="empty">No property data yet.</div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 5H4a1 1 0 0 0-1 1 4 4 0 0 0 4 4M17 5h3a1 1 0 0 1 1 1 4 4 0 0 1-4 4"/></svg>
+        </div>
+        <h3>Agent performance</h3>
+      </div>
+      <div id="agentsCard">
+        {% set best = dashboard.agent_performance.best_agent %}
+        {% set worst = dashboard.agent_performance.worst_agent %}
+        <div class="agent-block">
+          <div class="agent-label best">Best performance</div>
+          <div class="agent-name">{{ best.name if best else 'N/A' }}</div>
+          <div class="agent-reason">{{ best.reason if best else '' }}</div>
+        </div>
+        <div class="agent-block">
+          <div class="agent-label worst">Needs improvement</div>
+          <div class="agent-name">{{ worst.name if worst else 'N/A' }}</div>
+          <div class="agent-reason">{{ worst.reason if worst else '' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-bar">
+    <div class="chat-fab" id="chatFab" title="Chat with your calls">
+      <img src="{{ url_for('static', filename='ord.png') }}" alt="AI assistant">
+    </div>
+  </div>
+
+  <div class="chat-backdrop" id="chatBackdrop"></div>
+  <div class="chat-sheet" id="chatSheet">
+    <div class="chat-sheet-grabber"></div>
+    <div class="chat-sheet-header">
+      <div class="chat-ai-badge">
+        <img src="{{ url_for('static', filename='ord.png') }}" alt="AI assistant">
+      </div>
+      <div class="chat-sheet-title">Chat with your calls</div>
+      <button class="chat-close-btn" id="chatCloseBtn">&times;</button>
+    </div>
+    <div id="chat"></div>
+    <div id="inputRow">
+      <input id="userInput" type="text" placeholder="Ask about the calls..." />
+      <button id="sendBtn">Send</button>
+    </div>
+  </div>
+
+<script>
+const chatEl = document.getElementById('chat');
+const inputEl = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+const refreshBtn = document.getElementById('refreshBtn');
+const chatFab = document.getElementById('chatFab');
+const chatCloseBtn = document.getElementById('chatCloseBtn');
+const chatSheet = document.getElementById('chatSheet');
+const chatBackdrop = document.getElementById('chatBackdrop');
+let history = [];
+
+const VISITS_PREVIEW_COUNT = 4;
+
+function setupVisitsCollapse() {
+  const container = document.getElementById('visitsCard');
+  const existingBtn = container.querySelector('.visits-toggle-btn');
+  if (existingBtn) existingBtn.remove();
+
+  const items = Array.from(container.querySelectorAll('.visit-item'));
+  items.forEach(el => el.classList.remove('visit-hidden'));
+  container.querySelectorAll('.day-heading').forEach(el => el.classList.remove('visit-hidden'));
+  if (items.length <= VISITS_PREVIEW_COUNT) return;
+
+  function collapse() {
+    items.slice(VISITS_PREVIEW_COUNT).forEach(el => el.classList.add('visit-hidden'));
+    container.querySelectorAll('.day-group').forEach(group => {
+      const heading = group.querySelector('.day-heading');
+      const visible = Array.from(group.querySelectorAll('.visit-item')).some(el => !el.classList.contains('visit-hidden'));
+      if (heading) heading.classList.toggle('visit-hidden', !visible);
+    });
+  }
+  function expand() {
+    items.forEach(el => el.classList.remove('visit-hidden'));
+    container.querySelectorAll('.day-heading').forEach(el => el.classList.remove('visit-hidden'));
+  }
+
+  const btn = document.createElement('button');
+  btn.className = 'visits-toggle-btn';
+  btn.textContent = `View all (${items.length})`;
+  btn.dataset.collapsed = 'true';
+  btn.addEventListener('click', () => {
+    if (btn.dataset.collapsed === 'true') {
+      expand();
+      btn.textContent = 'Show less';
+      btn.dataset.collapsed = 'false';
+    } else {
+      collapse();
+      btn.textContent = `View all (${items.length})`;
+      btn.dataset.collapsed = 'true';
+    }
+  });
+
+  collapse();
+  container.appendChild(btn);
+}
+
+function toggleChat(open) {
+  chatSheet.classList.toggle('open', open);
+  chatBackdrop.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (open) setTimeout(() => inputEl.focus(), 320);
+}
+
+chatFab.addEventListener('click', () => toggleChat(true));
+chatCloseBtn.addEventListener('click', () => toggleChat(false));
+chatBackdrop.addEventListener('click', () => toggleChat(false));
+
+function addMessage(role, content) {
+  const wrap = document.createElement('div');
+  wrap.className = 'msg';
+  const label = document.createElement('div');
+  label.className = 'label';
+  label.textContent = role === 'user' ? 'You' : 'Assistant';
+  const body = document.createElement('div');
+  body.className = role === 'user' ? 'user' : 'assistant';
+  body.textContent = content;
+  wrap.appendChild(label);
+  wrap.appendChild(body);
+  chatEl.appendChild(wrap);
+  chatEl.scrollTop = chatEl.scrollHeight;
+}
+
+async function send() {
+  const message = inputEl.value.trim();
+  if (!message) return;
+  addMessage('user', message);
+  history.push({ role: 'user', content: message });
+  inputEl.value = '';
+  sendBtn.disabled = true;
+  addMessage('assistant', 'Thinking...');
+  const thinkingNode = chatEl.lastChild;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message, history: history.slice(0, -1) })
+    });
+    const data = await res.json();
+    thinkingNode.remove();
+    addMessage('assistant', data.reply);
+    history.push({ role: 'assistant', content: data.reply });
+  } catch (e) {
+    thinkingNode.remove();
+    addMessage('assistant', 'Error: ' + e.message);
+  }
+  sendBtn.disabled = false;
+}
+
+function renderDashboard(d) {
+  const visitsCard = document.getElementById('visitsCard');
+  visitsCard.innerHTML = d.upcoming_visits.length ? d.upcoming_visits.map(group => `
+    <div class="day-group">
+      <div class="day-heading">${group.day}</div>
+      ${group.visits.map(v => `
+        <div class="visit-item">
+          ${v.time ? `<span class="tag">${v.time}</span>` : ''}
+          <div class="visit-site">${v.site}</div>
+          <div class="visit-meta">Agent: ${v.agent} · Buyer: ${v.buyer}</div>
+        </div>`).join('')}
+    </div>`).join('') : '<div class="empty">No scheduled visits found.</div>';
+  setupVisitsCollapse();
+
+  const demandsCard = document.getElementById('demandsCard');
+  demandsCard.innerHTML = d.common_demands.length
+    ? `<ul>${d.common_demands.map(x => `<li>${x}</li>`).join('')}</ul>`
+    : '<div class="empty">No data yet.</div>';
+
+  const propertiesCard = document.getElementById('propertiesCard');
+  propertiesCard.innerHTML = d.top_properties.length ? d.top_properties.map((p, i) => `
+    <div class="prop-item">
+      <div class="prop-rank">${i + 1}</div>
+      <div class="prop-name">${p.property}</div>
+      <div class="prop-tags">
+        <span class="tag">${p.avg_score}/5</span>
+        <span class="tag">${p.mentions}×</span>
+      </div>
+    </div>`).join('') : '<div class="empty">No property data yet.</div>';
+
+  const agentsCard = document.getElementById('agentsCard');
+  const best = d.agent_performance.best_agent;
+  const worst = d.agent_performance.worst_agent;
+  agentsCard.innerHTML = `
+    <div class="agent-block">
+      <div class="agent-label best">Best performance</div>
+      <div class="agent-name">${best ? best.name : 'N/A'}</div>
+      <div class="agent-reason">${best ? best.reason : ''}</div>
+    </div>
+    <div class="agent-block">
+      <div class="agent-label worst">Needs improvement</div>
+      <div class="agent-name">${worst ? worst.name : 'N/A'}</div>
+      <div class="agent-reason">${worst ? worst.reason : ''}</div>
+    </div>`;
+}
+
+async function refreshInsights() {
+  refreshBtn.disabled = true;
+  try {
+    const res = await fetch('/api/dashboard?refresh=1');
+    const data = await res.json();
+    if (data.error) { alert(data.error); } else { renderDashboard(data); }
+  } catch (e) {
+    alert('Failed to refresh: ' + e.message);
+  }
+  refreshBtn.disabled = false;
+}
+
+sendBtn.addEventListener('click', send);
+inputEl.addEventListener('keydown', (e) => { if (e.key === 'Enter') send(); });
+refreshBtn.addEventListener('click', refreshInsights);
+setupVisitsCollapse();
+</script>
+</body>
+</html>

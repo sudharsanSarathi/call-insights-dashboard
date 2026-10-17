@@ -1,0 +1,35 @@
+{
+  "agent_name": "Bhanupriya",
+  "customer_name": "Abdullah",
+  "buyer_summary": "Own-use buyer, 18km from Vedanthur",
+  "primary_site_name": "Aadhava Avenue (Vadu chandur)",
+  "property_names": [
+    "Aadhava Avenue",
+    "Ariyabathampatti Road",
+    "Malvampatti",
+    "Velayuthampalayam Nadhaiyanur",
+    "Haravukkuri Main"
+  ],
+  "location": "Ariyabathampatti Road, near Malvampatti, 2 mins from bus stand, Dindigul district",
+  "budget_range": "₹780/sq ft onwards; ₹3.5 lakhs/cent",
+  "customer_requirements": [
+    "Own-use residential plot",
+    "Plot pricing",
+    "Location near Vedanthur",
+    "Multiple project locations across districts",
+    "Other phases/sites nearby"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": "afternoon/evening",
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Agent briefly confused customer identity/name",
+    "Customer not available onsite",
+    "Multiple district project list created confusion"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (3).mp3"
+}

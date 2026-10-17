@@ -1,0 +1,33 @@
+{
+  "agent_name": "Saleem",
+  "customer_name": "Hema",
+  "buyer_summary": "Own-use buyer, front-plot & house",
+  "primary_site_name": "Arasukurichi project near Chinnadharapuram",
+  "property_names": [
+    "Arasukurichi site",
+    "Chinnadharapuram bordering road",
+    "Aruvi Rice Mill area",
+    "Togaimurugan Real Estate project"
+  ],
+  "location": "Near Arasukurichi police station, Chinnadharapuram border road, Aruvi Rice Mill",
+  "budget_range": "Flat+plot Rs 50–55L; 2BHK Rs 30–45L; Plot Rs 5.25–5.75L",
+  "customer_requirements": [
+    "Own-use house purchase",
+    "Front-facing plot or house",
+    "Car parking included",
+    "Loan option available",
+    "Direct handover / construction"
+  ],
+  "scheduled_visit": {
+    "day": "Today",
+    "time": "6:30 PM",
+    "confirmed": true
+  },
+  "customer_interest_score": 5,
+  "issues": [
+    "Agent needs to coordinate in-person meeting with site supervisor",
+    "Customer seeking final rate concession clarity"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (14).mp3"
+}

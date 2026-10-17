@@ -1,0 +1,31 @@
+{
+  "agent_name": "Thondu Murugan",
+  "customer_name": "Vijayakumar",
+  "buyer_summary": "5-year renter seeking 2 BHK",
+  "primary_site_name": "Royal Road Koundan Pudur Project",
+  "property_names": [
+    "Vellaiyuthupalayam",
+    "Koundan Pudur",
+    "Nallinur",
+    "Goundampalayam"
+  ],
+  "location": "Vellaiyuthupalayam Royal Road near Noyyal",
+  "budget_range": "30 lakhs to 56 lakhs",
+  "customer_requirements": [
+    "2 BHK flat",
+    "wants to inspect construction and site",
+    "asked about east/north facing plots"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": "3:00 PM",
+    "confirmed": true
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Customer referenced previous property in Velanpalli while site is in Vellaiyuthupalayam",
+    "Agent did not confirm exact 2 BHK pricing or inventory on call"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (6).mp3"
+}

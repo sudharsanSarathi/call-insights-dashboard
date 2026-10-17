@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: call-insights-dashboard
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: LLM_PROVIDER
+        value: sarvam
+      - key: SARVAM_MODEL
+        value: sarvam-105b
+      - key: GROQ_MODEL
+        value: openai/gpt-oss-120b
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false

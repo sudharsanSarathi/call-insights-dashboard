@@ -1,0 +1,35 @@
+{
+  "agent_name": "Bhanupriya",
+  "customer_name": null,
+  "buyer_summary": "Namakkal painter, own-use buyer",
+  "primary_site_name": "Velayudham Palayam Nayanur",
+  "property_names": [
+    "Mavour et (Paramathi Velur–Tiruchengode road)",
+    "Aniyapuram",
+    "Velayudham Palayam Nayanur",
+    "Thogai Murugan Real Estate"
+  ],
+  "location": "Near Paramathi Velur, Namakkal district; along Paramathi Velur–Tiruchengode and Namakkal–Mohanur roads",
+  "budget_range": "₹2–2.5 lakhs (buyer); ₹27–31 lakhs (agent)",
+  "customer_requirements": [
+    "Own-use house",
+    "Budget ~₹2–2.5 lakhs",
+    "Photos/video before visit",
+    "Sunday visit to Nayanur site",
+    "Handling of taxes/maintenance"
+  ],
+  "scheduled_visit": {
+    "day": "Sunday",
+    "time": "9:30 AM",
+    "confirmed": true
+  },
+  "customer_interest_score": 3,
+  "issues": [
+    "Budget unit mismatch (lakhs vs lakhs)",
+    "Agent cannot share live model video",
+    "Tax/maintenance responsibilities unclear",
+    "Site location ambiguity Velur vs Paramathi"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (2).mp3"
+}

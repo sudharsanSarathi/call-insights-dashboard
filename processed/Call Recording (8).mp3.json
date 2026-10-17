@@ -1,0 +1,33 @@
+{
+  "agent_name": "Bhanu Priya",
+  "customer_name": null,
+  "buyer_summary": "Karur-side renter seeking 2BHK under 35L",
+  "primary_site_name": "Soundarya (Velayuthampalayam Nadiyanur)",
+  "property_names": [
+    "Velayuthampalayam Nadiyanur",
+    "Koodecheri"
+  ],
+  "location": "Near Muninathapuram bus stop on Kaoundambudur road, Paramathi Velur side",
+  "budget_range": "30 to 35 lakhs",
+  "customer_requirements": [
+    "2 BHK within 35L budget",
+    "Loan facility arrangement",
+    "Land extension for extra bedroom in 1 BHK plan",
+    "Move by mid-September",
+    "Paramathi Velur / Karur side"
+  ],
+  "scheduled_visit": {
+    "day": null,
+    "time": null,
+    "confirmed": false
+  },
+  "customer_interest_score": 4,
+  "issues": [
+    "Extension cost estimate for 1 BHK to 2 BHK not finalized",
+    "Specific visit date/time pending next callback",
+    "Loan bank and eligibility not specified",
+    "Koodecheri 2 BHK price 48L exceeds 30-35L budget"
+  ],
+  "outcome": "callback_requested",
+  "call_name": "Call Recording (8).mp3"
+}

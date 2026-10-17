@@ -1,0 +1,32 @@
+{
+  "agent_name": null,
+  "customer_name": null,
+  "buyer_summary": "Namakkal buyer MBA in housing finance",
+  "primary_site_name": "Aniyapuram Parali Division",
+  "property_names": [
+    "Aniyapuram Parali Road",
+    "Paramathi side",
+    "PGP College opposite",
+    "Tiruchengode line"
+  ],
+  "location": "Namakkal to Mohanur road Aniyapuram near railway track",
+  "budget_range": "20-25 lakhs market rate 54 lakhs",
+  "customer_requirements": [
+    "2BHK flat",
+    "Budget up to 23-24 lakhs",
+    "Loan-friendly / installment-based construction"
+  ],
+  "scheduled_visit": {
+    "day": "Monday",
+    "time": null,
+    "confirmed": true
+  },
+  "customer_interest_score": 3,
+  "issues": [
+    "Price discrepancy between 54 lakhs market and 23-24 lakhs buyer expectation",
+    "Loan disbursement schedule mismatch with construction payments",
+    "Original lead blocked by legal issue in mortgage processing"
+  ],
+  "outcome": "visit_scheduled",
+  "call_name": "Call Recording (17).mp3"
+}
